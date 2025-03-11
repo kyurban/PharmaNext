@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory List</title>
+</head>
+<body>
+
+    {% include 'nav_bar.html' %}
+
+    <h1>Inventory Items</h1>
+    <a href="{% url 'inventory_create' %}">Add New Item</a>
+    <ul>
+        {% for item in items %}
+            <li>
+                <strong>{{ item.name }}</strong><br>
+                Uses: {{ item.uses }}<br>
+                Quantity: {{ item.quantity }}<br>
+                Price: ${{ item.price }}<br>
+                Expiration Date: {{ item.expiration_date }}<br>
+                <a href="{% url 'inventory_update' item.pk %}">Edit</a>
+                <a href="{% url 'inventory_delete' item.pk %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

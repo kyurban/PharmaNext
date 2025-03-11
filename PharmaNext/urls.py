@@ -23,4 +23,6 @@ urlpatterns = [
     path("QT/", include('rx_pending.urls')),
     path("QP/", include('rx_production.urls')),
     path("QV/", include('rx_verification.urls')),
+    path("inventory/", include('inventory_management.urls')),
+    path("patient/", include('patient_management.urls')),
 ]

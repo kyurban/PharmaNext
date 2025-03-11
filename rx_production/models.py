@@ -1,4 +1,5 @@
 from django.db import models
+from rx_pending.models import Prescription
 
 class QP(models.Model):
     prescription = models.OneToOneField(Prescription, on_delete=models.CASCADE)

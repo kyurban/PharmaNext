@@ -1,4 +1,6 @@
 from django.db import models
+from patient_management.models import Patient
+from inventory_management.models import InventoryItem
 
 class Prescription(models.Model):
     STATUS_CHOICES = [

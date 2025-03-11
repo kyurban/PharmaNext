@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NavBar</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/nav_bar.css' %}">
+</head>
+<body>
+
+<div class="navbar">
+    <nav>
+        <h2 id="title">PharmaNext</h2>
+        <ul class="nav-list">
+            <li><a href="/inventory">Inventory</a></li>
+            <li><a href="/patients">Patients</a></li>
+            <li><a href="/QT">QT</a></li>
+            <li><a href="/QP">QP</a></li>
+            <li><a href="/QV">QV</a></li>
+        </ul>
+    </nav>
+</div>
+
+</body>
+</html>
