@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if form.instance.pk %}Update Item{% else %}Add New Item{% endif %}</title>
+</head>
+<body>
+
+    {% include 'nav_bar.html' %}
+    
+    <h1>{% if form.instance.pk %}Update Patient{% else %}Add New Patient{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'search_patient' %}">Cancel</a>
+</body>
+</html>

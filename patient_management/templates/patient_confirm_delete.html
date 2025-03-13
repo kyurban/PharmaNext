@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Item</title>
+    <title>Delete Patient</title>
 </head>
 <body>
 
     {% include 'nav_bar.html' %}
     
-    <h1>Are you sure you want to delete "{{ item.name }}"?</h1>
+    <h1>Are you sure you want to delete the profile for "{{ patient.first_name }} {{patient.last_name}}"?</h1>
     <form method="post">
         {% csrf_token %}
         <button type="submit">Yes</button>
     </form>
-    <a href="{% url 'inventory_list' %}">Cancel</a>
+    <a href="{% url 'search_patient' %}">Cancel</a>
 </body>
 </html>
