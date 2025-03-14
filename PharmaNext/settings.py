@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 from decouple import Config
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 config = Config(os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env'))
 

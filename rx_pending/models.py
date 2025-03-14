@@ -17,12 +17,5 @@ class Prescription(models.Model):
     prescribed_by = models.CharField(max_length=100)
 
     def __str__(self):
-        return f"Prescription {self.id} - {self.patient}"
-
-class QT(models.Model):
-    prescription = models.OneToOneField(Prescription, on_delete=models.CASCADE)
-    received_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"Pending - {self.prescription}"
+        return f"{self.patient} - {self.drug}"
 
