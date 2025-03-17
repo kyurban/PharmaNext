@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification</title>
+</head>
+<body>
+
+    {% include 'nav_bar.html' %}
+
+    <h1>Fill Details</h1>
+    <p>{{ prescription.id }}</p>
+    <p>{{ prescription.patient }}</p>
+    <p>{{ prescription.drug }}</p>
+    <p>{{ prescription.quantity }}</p>
+    <p>{{ prescription.prescribed_by }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Complete</button>
+    </form>
+    <a href="{% url 'verification_list' %}">Cancel</a>
+</body>
+</html>

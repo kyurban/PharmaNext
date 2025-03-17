@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pending</title>
+    <title>Production</title>
 </head>
 <body>
     {% include 'nav_bar.html' %}
-    <h1>QT List</h1>
+    <h1>QP List</h1>
     <table border="1">
         <thead>
             <tr>
                 <th>Prescription ID</th>
                 <th>Patient Name</th>
                 <th>Prescription Drug</th>
+                <th>Quantity</th>
             </tr>
         </thead>
         <tbody>
@@ -22,10 +23,8 @@
                 <td>{{ prescription.id }}</td>
                 <td>{{ prescription.patient }}</td>
                 <td>{{ prescription.drug }}</td>
-                <td>
-                    <a href="{% url 'pending_detail' prescription.pk %}">View</a>
-                    <a href="{% url 'pending_delete' prescription.pk %}">Delete</a>
-                </td>
+                <td>{{ prescription.quantity }}</td>
+                <td><a href="{% url 'production_detail' prescription.pk %}">View</a></td>
             </tr>
             {% endfor %}
         </tbody>
