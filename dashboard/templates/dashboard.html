@@ -1,31 +1,40 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <title>Dashboard</title>
 </head>
 <body>
 
-    <header class="nav-bar">
+    <header class="title">
         <h1>PharmaNext</h1>
     </header>
 
-    <div class="menu-cards">
-        <div class="QT">
-            <h2><a href="/QT">Rx Pending (QT)</a></h2>
-        </div>
-        <div class="QP">
-            <h2><a href="/QP">Rx Production (QP)</a></h2>
-        </div>
-        <div class="QV">
-            <h2><a href="/QV">Rx Verification (QV)</a></h2>
-        </div>
-        <div class="inventory">
+    <div class="top-cards">
+        <div class="top-card">
             <h2><a href="/inventory">Inventory Management</a></h2>
         </div>
-        <div class="patients">
+        <div class="top-card">
             <h2><a href="/patient">Patient Management</a></h2>
+        </div>
+    </div>
+
+    <div class="bot-cards">
+        <div class="bot-card">
+            <h2><a href="/QT">Rx Pending (QT)</a></h2>
+        </div>
+        <div class="bot-card">
+            <h2><a href="/QP">Rx Production (QP)</a></h2>
+        </div>
+        <div class="bot-card">
+            <h2><a href="/QV">Rx Verification (QV)</a></h2>
         </div>
     </div>
 

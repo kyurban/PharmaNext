@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'rx_verification',
     'inventory_management',
     'patient_management',
+    'login',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +61,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CSRF_COOKIE_AGE = 86400
 
 ROOT_URLCONF = 'PharmaNext.urls'
 
