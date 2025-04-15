@@ -1,29 +1,53 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Kanit:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/inventory_list.css' %}">
 </head>
 <body>
 
     {% include 'nav_bar.html' %}
 
-    <h1>Inventory Items</h1>
-    <a href="{% url 'inventory_create' %}">Add New Item</a>
-    <ul>
-        {% for item in items %}
-            <li>
-                <strong>{{ item.name }}</strong><br>
-                Uses: {{ item.uses }}<br>
-                Quantity: {{ item.quantity }}<br>
-                Price: ${{ item.price }}<br>
-                Expiration Date: {{ item.expiration_date }}<br>
-                <a href="{% url 'inventory_update' item.pk %}">Edit</a>
-                <a href="{% url 'inventory_delete' item.pk %}">Delete</a>
-            </li>
-        {% endfor %}
-    </ul>
+    <h1 id="header">Inventory Items</h1>
+
+    <div class="inventory-container">
+        <a class="add-item" href="{% url 'inventory_create' %}">+ Add New Item</a>
+
+        <table class="inventory-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Uses</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Expiration Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.uses }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>${{ item.price }}</td>
+                        <td>{{ item.expiration_date }}</td>
+                        <td>
+                            <a href="{% url 'inventory_update' item.pk %}">Edit</a> |
+                            <a href="{% url 'inventory_delete' item.pk %}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 </body>
 </html>

@@ -14,18 +14,17 @@
 <body>
 
     <header class="title">
-        <h1>PharmaNext</h1>
+        <h1>Welcome to PharmaNext</h1>
     </header>
 
     <div class="login-container">
         <form method="POST" action="{% url 'login_user' %}">
             {% csrf_token %}
-
-            <div>
+            <div class="username">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
             </div>
-            <div>
+            <div class="password">
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
             </div>

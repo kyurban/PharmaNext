@@ -1,27 +1,99 @@
 body {
     font-family: 'Lato', sans-serif;
     background: radial-gradient(circle, #D6E9FF 20%, #3A7AC3 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
 }
 
 .title {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     color: #3A7AC4;
-    font-size: 1.8rem;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
 
 .login-container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    margin-top: 25px;
+    width: 100%;
 }
 
 form {
     background-color: #f4f4f4;
     color: #3A7AC4;
     text-align: center;
-    height: 55vh;
-    width: 55vh;
+    height: auto;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.username,
+.password {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: 0.3s ease-in-out;
+}
+
+input:focus {
+    border-color: #3A7AC4;
+    outline: none;
+    box-shadow: 0 0 5px rgba(58, 122, 196, 0.5);
+}
+
+button {
+    background-color: #3A7AC4;
+    color: white;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #2a5a8f;
+}
+
+.message {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.message p {
+    font-size: 1rem;
+    color: red;
+    font-weight: bold;
 }

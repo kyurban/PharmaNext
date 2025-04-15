@@ -1,19 +1,29 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete Item</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Kanit:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/inventory_delete.css' %}">
 </head>
 <body>
 
     {% include 'nav_bar.html' %}
-    
-    <h1>Are you sure you want to delete "{{ item.name }}"?</h1>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Yes</button>
-    </form>
-    <a href="{% url 'inventory_list' %}">Cancel</a>
+
+    <div class="delete-container">
+        <h1>Are you sure you want to delete <span class="item-name">{{ item.name }}</span>?</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="confirm-btn">Yes, Delete</button>
+            <a href="{% url 'inventory_list' %}" class="cancel-link">Cancel</a>
+        </form>
+    </div>
+
 </body>
 </html>

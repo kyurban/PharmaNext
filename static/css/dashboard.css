@@ -16,10 +16,12 @@ body {
     display: flex;
     justify-content: space-evenly;
     margin: 20px 100px;
+    margin-bottom: 50px;
 }
 
 .top-card {
     background-color: #F2F4F7;
+    border-radius: 10px;
     width: 50vh;
     height: 30vh;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -45,6 +47,7 @@ body {
 
 .bot-card {
     background-color: #F2F4F7;
+    border-radius: 10px;
     width: 50vh;
     height: 30vh;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
