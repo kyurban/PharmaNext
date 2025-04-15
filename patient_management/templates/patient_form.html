@@ -1,20 +1,49 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/patient_form.css' %}">
     <title>{% if form.instance.pk %}Update Item{% else %}Add New Item{% endif %}</title>
 </head>
 <body>
 
     {% include 'nav_bar.html' %}
-    
-    <h1>{% if form.instance.pk %}Update Patient{% else %}Add New Patient{% endif %}</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
-    </form>
-    <a href="{% url 'search_patient' %}">Cancel</a>
+
+    <div class="container">
+        <div class="card form-card">
+            <h2>{% if form.instance.pk %}Patient Information{% else %}Add New Patient{% endif %}</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="submit-btn">Save</button>
+            </form>
+            <a href="{% url 'search_patient' %}" class="cancel-link">Cancel</a>
+        </div>
+
+        <div class="card prescriptions-card">
+            <h2>Prescriptions</h2>
+            {% if prescriptions %}
+                <ul class="prescription-list">
+                    {% for p in prescriptions %}
+                        <li>
+                            <strong>{{ p.drug.name }}</strong><br>
+                            {{ p.sig }}<br>
+                            Quantity: {{ p.quantity }}<br>
+                            Status: {{ p.status }}<br>
+                            Prescribed by: {{ p.prescribed_by }}<br>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No prescriptions for this patient.</p>
+            {% endif %}
+        </div>
+    </div>
+
 </body>
 </html>

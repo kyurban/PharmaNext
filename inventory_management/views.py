@@ -37,3 +37,12 @@ def inventory_delete(request, pk):
         item.delete()
         return redirect('inventory_list')
     return render(request, 'inventory_confirm_delete.html', {'item': item})
+
+# Displays searched inventory items
+def inventory_list(request):
+    query = request.GET.get('q', '')
+    if query:
+        items = InventoryItem.objects.filter(name__icontains=query)
+    else:
+        items = InventoryItem.objects.all()
+    return render(request, 'inventory_list.html', {'items': items})

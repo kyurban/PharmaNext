@@ -9,53 +9,59 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-.form-container {
-    max-width: 600px;
-    margin: 20px auto;
-    background: #fff;
-    padding: 30px;
-    padding-top: 5px;
-    border-radius: 10px;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+.container {
+    display: flex;
+    gap: 30px;
+    max-width: 1500px;
+    margin: auto;
+    margin-top: 40px;
+    flex-wrap: wrap;
 }
 
-h1 {
-    text-align: center;
+.card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 300px;
+}
+
+h2 {
+    margin-bottom: 20px;
     color: #333;
-    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
 }
 
 form {
     display: flex;
     flex-direction: column;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 form p {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 label {
-    font-weight: 600;
+    font-weight: bold;
     display: block;
     margin-bottom: 5px;
     color: #444;
 }
 
-input[type="text"],
-input[type="number"],
-input[type="date"],
-textarea,
-select {
-    width: 100%;
+input, select, textarea {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 1rem;
-    font-family: inherit;
+    width: 100%;
     background-color: #fdfdfd;
 }
 
-button.submit-btn {
+.submit-btn {
     padding: 10px 16px;
     background-color: #007bff;
     color: white;
@@ -67,18 +73,33 @@ button.submit-btn {
     margin-top: 10px;
 }
 
-button.submit-btn:hover {
+.submit-btn:hover {
     background-color: #0069d9;
 }
 
-a.cancel-link {
+.cancel-link {
     display: inline-block;
     margin-top: 15px;
-    text-align: center;
     color: #555;
     text-decoration: none;
+    display: flex;
+    justify-content: center;
 }
 
-a.cancel-link:hover {
+.cancel-link:hover {
     text-decoration: underline;
 }
+
+.prescription-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.prescription-list li {
+    background-color: #f1f7ff;
+    border: 1px solid #d1e3f3;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+}
+

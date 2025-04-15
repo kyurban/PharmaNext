@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
+
+from rx_pending.models import Prescription
 from .models import Patient
 from .forms import PatientForm, PatientSearchForm
 
@@ -29,6 +31,8 @@ def patient_create(request):
 
 def patient_update(request, pk):
     patient = Patient.objects.get(pk=pk)
+    prescriptions = Prescription.objects.filter(patient=patient)
+
     if request.method == 'POST':
         form = PatientForm(request.POST, instance=patient)
         if form.is_valid():
@@ -36,7 +40,11 @@ def patient_update(request, pk):
             return redirect('search_patient')
     else:
         form = PatientForm(instance=patient)
-    return render(request, 'patient_form.html', {'form': form})
+    
+    return render(request, 'patient_form.html', {
+        'form': form,
+        'prescriptions': prescriptions,
+    })
 
 def patient_delete(request, pk):
     patient = Patient.objects.get(pk=pk)

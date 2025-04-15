@@ -18,7 +18,14 @@
     <h1 id="header">Inventory Items</h1>
 
     <div class="inventory-container">
-        <a class="add-item" href="{% url 'inventory_create' %}">+ Add New Item</a>
+        <div class="top-section">
+            <a class="add-item" href="{% url 'inventory_create' %}">+ Add New Item</a>
+
+            <form class="search-bar" method="get" action="">
+                <input type="text" name="q" placeholder="Search by name..." value="{{ request.GET.q }}">
+                <button type="submit">Search</button>
+            </form>
+        </div>
 
         <table class="inventory-table">
             <thead>
@@ -44,6 +51,10 @@
                             <a href="{% url 'inventory_delete' item.pk %}">Delete</a>
                         </td>
                     </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="6">No items found.</td>
+                    </tr>
                 {% endfor %}
             </tbody>
         </table>
@@ -51,3 +62,4 @@
 
 </body>
 </html>
+

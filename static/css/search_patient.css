@@ -1,0 +1,100 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+#patient-page {
+    font-family: 'Lato', sans-serif;
+    padding-top: 10px;
+}
+
+#header {
+    text-align: center;
+    color: #333;
+}
+
+.search-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    max-width: 1000px;
+    margin: 2rem auto;
+}
+
+.search-bar input[type="text"] {
+    flex: 1 1 200px;
+    padding: 0.6rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.search-bar button {
+    background-color: #2F5FA3;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #1d3d6e;
+}
+
+.search-bar .add-patient {
+    color: #2F5FA3;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: auto;
+    transition: color 0.3s;
+}
+
+.search-bar .add-patient:hover {
+    color: #1b3f70;
+}
+
+.patient-list {
+    max-width: 800px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+}
+
+.patient-list li {
+    background-color: #fff;
+    margin-bottom: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.patient-list li span {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.patient-actions a {
+    margin-left: 1rem;
+    color: #2F5FA3;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.patient-actions a:hover {
+    color: #1b3f70;
+}
