@@ -1,23 +1,48 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Production</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
 </head>
 <body>
 
     {% include 'nav_bar.html' %}
 
-    <h1>Fill Details</h1>
-    <p>{{ prescription.id }}</p>
-    <p>{{ prescription.patient }}</p>
-    <p>{{ prescription.drug }}</p>
-    <p>{{ prescription.quantity }}</p>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Complete</button>
-    </form>
-    <a href="{% url 'production_list' %}">Cancel</a>
+    <div class="container">
+        <div class="card form-card">
+            <h2>Fill Details</h2>
+            
+            <div class="readonly-field">
+                <label>Prescription ID:</label>
+                <span>{{ prescription.id }}</span>
+            </div>
+            <div class="readonly-field">
+                <label>Patient Name:</label>
+                <span>{{ prescription.patient }}</span>
+            </div>
+            <div class="readonly-field">
+                <label>Prescription Drug:</label>
+                <span>{{ prescription.drug }}</span>
+            </div>
+            <div class="readonly-field">
+                <label>Quantity:</label>
+                <span>{{ prescription.quantity }}</span>
+            </div>
+
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="submit-btn">Complete</button>
+            </form>
+
+            <a href="{% url 'production_list' %}" class="cancel-link">Cancel</a>
+        </div>
+    </div>
+
 </body>
 </html>
