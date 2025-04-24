@@ -11,12 +11,12 @@ def search_patient(request):
         first_name = form.cleaned_data["first_name"][:3]
         last_name = form.cleaned_data["last_name"][:3]
         dob = form.cleaned_data["dob"]
-    
+
         patients = Patient.objects.filter(
-            first_name__startswith=first_name,
-            last_name__startswith=last_name,
+            first_name__istartswith=first_name,
+            last_name__istartswith=last_name,
             dob=dob
-    )
+        )
     return render(request, 'search_patient.html', {"form": form, "patients": patients})
 
 def patient_create(request):

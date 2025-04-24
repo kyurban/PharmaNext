@@ -37,5 +37,39 @@
         </ul>
         {% endif %}
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const fields = [
+            document.getElementById('id_first_name'),
+            document.getElementById('id_last_name'),
+            document.getElementById('id_dob')
+          ];
+      
+          document.addEventListener('keydown', (e) => {
+            const currentIndex = fields.findIndex(f => document.activeElement === f);
+      
+            if (e.key === 'ArrowRight' && currentIndex < fields.length - 1) {
+              fields[currentIndex + 1].focus();
+              e.preventDefault();
+            } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+              fields[currentIndex - 1].focus();
+              e.preventDefault();
+            }
+          });
+      
+          const dobInput = document.getElementById('id_dob');
+      
+          dobInput.addEventListener('input', () => {
+            let value = dobInput.value.replace(/\D/g, '').slice(0, 8);
+            let formatted = '';
+      
+            if (value.length > 0) formatted += value.slice(0, 2);
+            if (value.length > 2) formatted += '/' + value.slice(2, 4);
+            if (value.length > 4) formatted += '/' + value.slice(4);
+      
+            dobInput.value = formatted;
+          });
+        });
+      </script>
 </body>
 </html>

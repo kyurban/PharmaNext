@@ -3,41 +3,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
-    <title>Dashboard</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PharmaNext Dashboard</title>
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 </head>
 <body>
+  <header class="title">
+    <h1>PharmaNext</h1>
+  </header>
 
-    <header class="title">
-        <h1>PharmaNext</h1>
-    </header>
-    
+  <main>
+    <section class="top-cards">
+      <div class="card">
+        <a href="/inventory">
+          <h2>Inventory</h2>
+          <p>Drugs in Stock</p>
+        </a>
+      </div>
 
-    <div class="top-cards">
-        <div class="top-card">
-            <h2><a href="/inventory">Inventory Management</a></h2>
-        </div>
-        <div class="top-card">
-            <h2><a href="/patient">Patient Management</a></h2>
-        </div>
-    </div>
+      <div class="card">
+        <a href="/patient">
+          <h2>Patients</h2>
+          <p>Active Patient Records</p>
+        </a>
+      </div>
+    </section>
 
-    <div class="bot-cards">
-        <div class="bot-card">
-            <h2><a href="/QT">Rx Pending (QT)</a></h2>
-        </div>
-        <div class="bot-card">
-            <h2><a href="/QP">Rx Production (QP)</a></h2>
-        </div>
-        <div class="bot-card">
-            <h2><a href="/QV">Rx Verification (QV)</a></h2>
-        </div>
-    </div>
+    <section class="bottom-cards">
+      <div class="card">
+        <a href="/QT">
+          <h2>Rx Pending (QT)</h2>
+          <span class="badge">{{ count_qt }}</span>
+          <p>Incoming Prescriptions</p>
+        </a>
+      </div>
 
+      <div class="card">
+        <a href="/QP">
+          <h2>Rx Production (QP)</h2>
+          <span class="badge">{{ count_qp }}</span>
+          <p>Awaiting Fill</p>
+        </a>
+      </div>
+
+      <div class="card">
+        <a href="/QV">
+          <h2>Rx Verification (QV)</h2>
+          <span class="badge">{{ count_qv }}</span>
+          <p>Awaiting Pharmacist Approval</p>
+        </a>
+      </div>
+    </section>
+  </main>
+  <script>
+    // grab all cards into an array
+    const cards = Array.from(document.querySelectorAll('.card'))
+    let current = 0
+  
+    // initially highlight the first card
+    cards[current].classList.add('focused')
+  
+    document.addEventListener('keydown', e => {
+      // remove highlight
+      cards[current].classList.remove('focused')
+  
+      if (e.key === 'ArrowLeft' && current > 0) {
+        current--
+      }
+      else if (e.key === 'ArrowRight' && current < cards.length - 1) {
+        current++
+      }
+      else if (e.key === 'Enter') {
+        cards[current].querySelector('a').click()
+        return
+      }
+  
+      // add highlight back
+      cards[current].classList.add('focused')
+    })
+  </script>
 </body>
 </html>
