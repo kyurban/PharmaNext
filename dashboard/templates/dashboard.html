@@ -23,7 +23,7 @@
       </div>
 
       <div class="card">
-        <a href="/patient">
+        <a href="/patients">
           <h2>Patients</h2>
           <p>Active Patient Records</p>
         </a>
@@ -47,27 +47,27 @@
         </a>
       </div>
 
-      <div class="card">
-        <a href="/QV">
-          <h2>Rx Verification (QV)</h2>
-          <span class="badge">{{ count_qv }}</span>
-          <p>Awaiting Pharmacist Approval</p>
-        </a>
-      </div>
+      {% if is_pharmacist %}
+        <div class="card">
+          <a href="/QV">
+            <h2>Rx Verification (QV)</h2>
+            <span class="badge">{{ count_qv }}</span>
+            <p>Awaiting Pharmacist Approval</p>
+          </a>
+        </div>
+      {% endif %}
     </section>
   </main>
+
   <script>
-    // grab all cards into an array
     const cards = Array.from(document.querySelectorAll('.card'))
     let current = 0
-  
-    // initially highlight the first card
+
     cards[current].classList.add('focused')
-  
+
     document.addEventListener('keydown', e => {
-      // remove highlight
       cards[current].classList.remove('focused')
-  
+
       if (e.key === 'ArrowLeft' && current > 0) {
         current--
       }
@@ -75,11 +75,11 @@
         current++
       }
       else if (e.key === 'Enter') {
-        cards[current].querySelector('a').click()
+        const link = cards[current].querySelector('a')
+        if (link) link.click()
         return
       }
-  
-      // add highlight back
+
       cards[current].classList.add('focused')
     })
   </script>
