@@ -74,3 +74,29 @@ body {
     border: 2px solid #3A7AC4;
   }
 
+
+  .logout-link {
+    width: 100%;
+    text-align: center;
+    margin: 60px 0 20px;
+  }
+  
+  .logout-link a {
+    display: inline-block;
+    color: #FF5C5C;
+    font-size: 1.4rem;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: 2px solid #FF5C5C;
+    border-radius: 8px;
+  }
+  
+  .logout-link a:hover {
+    background-color: #FF5C5C;
+    color: white;
+  }
+  
+
+  
+
