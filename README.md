@@ -11,12 +11,12 @@ PharmaNext is a pharmacy management system designed to streamline prescription p
 - Comprehensive profiles with prescription history and contact details.
 
 **Prescription Interfaces**
-- **Pending Interface (QT):** Displays incoming electronic prescriptions for entry.
-- **Production Interface (QP):** Displays instructions to fill prescriptions.
-- **Verification Interface (QV):** Used by authorized pharmacists to verify filled prescriptions.
+- **Rx Pending Interface (QT):** Displays incoming electronic prescriptions for entry.
+- **Rx Production Interface (QP):** Displays instructions to fill prescriptions.
+- **Rx Verification Interface (QV):** Used by authorized pharmacists to verify filled prescriptions.
 
 **Prescription Lifecycle**
-- **New Prescription:** QT ➜ QP ➜ QV
+- QT ➜ QP ➜ QV
 
 **Efficient Workflow**
 - Seamless task transitions with minimal keystrokes.
@@ -37,7 +37,6 @@ PharmaNext is a pharmacy management system designed to streamline prescription p
 Clone the repository:
    ```bash
    git clone https://github.com/kyurban/pharmanext.git
-   cd pharmanext
 ```
 Setup Virtual Environment:
   ```
@@ -52,7 +51,9 @@ Install Dependencies:
 
 1. **Install MySQL**
 
-    https://dev.mysql.com/downloads/installer/
+    MacOS: ```brew install mysql```
+   
+    Windows: https://dev.mysql.com/downloads/installer/
 
 3. **Create the Database**
    
@@ -61,6 +62,12 @@ Install Dependencies:
    CREATE DATABASE pharmanext;  # Create the database
    exit;  # Exit MySQL
 
+4. Generate Secret Key
+
+   ```
+   python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+   ```
+
 4. **Create a `.env` file for MySQL credentials**
    ```
     DB_NAME=pharmanext
@@ -68,6 +75,7 @@ Install Dependencies:
     DB_PASSWORD=your_password
     DB_HOST=localhost
     DB_PORT=3306
+    SECRET_KEY=your_secret_key
    ```
 5. **Import Sample Data**
    ```
@@ -75,6 +83,7 @@ Install Dependencies:
    ```
 6. **Run Migrations**
    ```
+   python manage.py makemigrations
    python manage.py migrate
    ```
 7. **Start the Server**
