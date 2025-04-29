@@ -4,6 +4,7 @@ from rx_pending.models import Prescription
 from .models import Patient
 from .forms import PatientForm, PatientSearchForm
 
+# Displays primary page to search for patients
 def search_patient(request):
     form = PatientSearchForm(request.GET or None)
     patients = []
@@ -19,6 +20,7 @@ def search_patient(request):
         )
     return render(request, 'search_patient.html', {"form": form, "patients": patients})
 
+# Displays form for adding a new patient profile
 def patient_create(request):
     if request.method == 'POST':
         form = PatientForm(request.POST)
@@ -29,6 +31,7 @@ def patient_create(request):
         form = PatientForm()
     return render(request, 'patient_form.html', {'form': form})
 
+# Displays patient profile with prescriptions and allows for editing
 def patient_update(request, pk):
     patient = Patient.objects.get(pk=pk)
     prescriptions = Prescription.objects.filter(patient=patient)
@@ -46,6 +49,7 @@ def patient_update(request, pk):
         'prescriptions': prescriptions,
     })
 
+# Displays seperate confirmation page to delete a patient profile
 def patient_delete(request, pk):
     patient = Patient.objects.get(pk=pk)
     if request.method == 'POST':

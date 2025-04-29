@@ -1,6 +1,4 @@
 from django.test import TestCase
-
-from django.test import TestCase
 from django.urls import reverse
 from .models import Prescription
 from patient_management.models import Patient
