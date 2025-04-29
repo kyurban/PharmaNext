@@ -90,6 +90,23 @@ Install Dependencies:
    ```
    python manage.py runserver
    ```
+## Login Information
+
+**Pharmacist view**
+
+- Username: pharmacist
+
+- Password: pharmanext1
+
+**Technician View**
+
+- Username: technician
+
+- Password: pharmanext2
+
+
+<p align="center">© 2025 Kyle Urban · MIT License</p>
+
 
 
    
