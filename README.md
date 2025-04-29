@@ -105,8 +105,4 @@ Install Dependencies:
 - Password: pharmanext2
 
 
-<p align="center">© 2025 Kyle Urban · MIT License</p>
-
-
-
    
