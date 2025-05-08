@@ -11,15 +11,10 @@ def pending_list(request):
 def pending_detail(request, pk):
     prescription = Prescription.objects.get(pk=pk)
     if request.method == 'POST':
-        form = PrescriptionForm(request.POST, instance=prescription)
-        if form.is_valid():
-            form.save()
-            prescription.status = 'In Production'
-            prescription.save()
-            return redirect('pending_list')
-    else:
-        form = PrescriptionForm(instance=prescription)
-    return render(request, 'QT_form.html', {'form': form, 'prescription': prescription})
+        prescription.status = 'In Production'
+        prescription.save()
+        return redirect('pending_list')
+    return render(request, 'QT_form.html', {'prescription': prescription})
 
 # Displays a confirmation page to delete a prescription
 def pending_delete(request, pk):
